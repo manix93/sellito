@@ -3,7 +3,7 @@ require 'rails_helper'
 describe HomepageController do
   describe '#index' do
     it 'returns 200' do
-      get
+      get :index
       expect(response.status).to be 200
     end    
   end
