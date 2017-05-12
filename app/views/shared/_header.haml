@@ -10,14 +10,9 @@
         = link_to 'About', about_path
       %li
         = link_to 'Cookies', cookies_path
-      -if current_user_is_admin
-        %li
-          = link_to 'Categories', categories_path
-      -if current_user
-        %li
-          = logout_user_link
-      -else
-        %li
-          = login_user_link
-        %li
-          = register_user_link
+      = admin_categories_link
+      %li
+        = login_or_logout_user_link
+      %li
+        = register_user_link
+        
