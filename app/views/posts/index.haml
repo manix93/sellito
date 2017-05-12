@@ -1,0 +1,3 @@
+%h2= 'Posts:'
+- @posts.each do |post|
+  %p= link_to post.title, post
