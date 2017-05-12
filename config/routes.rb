@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'homepage#index'
 
-  resources :users do
-    resources :posts
-  end
+  resources :posts
 
   resources :categories
 
