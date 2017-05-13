@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def create
     #binding.pry # odpala pry w momencie wywołania metody
     #raise params.to_yaml # wyrzuca wyjątek do przeglądarki
-    return unless post_params[:user_id] == current_user.id.to_s
+    return unless nasty_hacker
     @category = Category.new(category_params)
     @category.valid? ? create_post : handle_post_validation_failed
   end
@@ -33,6 +33,10 @@ class CategoriesController < ApplicationController
   end
 
   private
+
+  def nasty_hacker
+    post_params[:user_id] == current_user.id.to_s
+  end
 
   def handle_post_validation_failed
     flash[:errors] = @category.errors.full_messages
