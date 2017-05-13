@@ -1,5 +1,5 @@
 %h2
   Edit post:
   = @post.title
-  = link_to 'Delete', @post, method: :delete, data: { confirm: "Are you sure?" }
+  = link_to 'Delete', @post, method: :delete, data: { confirm: "Are you sure?" } if post_owner(@post)
 = render 'form'
