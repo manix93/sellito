@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :fetch_category, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_category, only: %i[show edit update destroy]
 
   def index
     @categories = Category.all
@@ -10,8 +10,8 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    #binding.pry # odpala pry w momencie wywołania metody
-    #raise params.to_yaml # wyrzuca wyjątek do przeglądarki
+    # binding.pry # odpala pry w momencie wywolania metody
+    # raise params.to_yaml # wyrzuca wyjatek do przegladarki
     return unless params_have_valid_user_id
     @category = Category.new(category_params)
     @category.valid? ? create_post : handle_post_validation_failed

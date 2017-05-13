@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :fetch_post, only: %i(show edit update destroy)
+  before_action :fetch_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.all.reverse
-    # Wyświetla ostatnie 5 postów użytkownika
+    # Wyswietla ostatnie 5 postow uzytkownika
     # @posts = current_user.posts.last(5)
   end
 
@@ -16,8 +16,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    # Zabezpieczenie przed podmianą id aktualnie zalogowanego użytkownika
-    # Uniemożliwia dodanie psotu dla innego użytkownika, niż aktualni zalogowany
+    # Zabezpieczenie przed podmiana id aktualnie zalogowanego uzytkownika
+    # Uniemozliwia dodanie psotu dla innego uzytkownika, niz aktualni zalogowany
     return unless post_params[:user_id] == current_user.id.to_s
     @post = Post.new(post_params)
     if @post.valid?
@@ -52,6 +52,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-     params.require(:post).permit(:title, :description, :expiration_date, :user_id)
+    params.require(:post).permit(:title, :description, :expiration_date, :user_id)
   end
 end

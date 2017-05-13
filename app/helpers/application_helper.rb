@@ -1,15 +1,15 @@
 module ApplicationHelper
   def admin_categories_link
-    categories_link_tag = "#{link_to 'Categories', categories_path}"
+    categories_link_tag = link_to 'Categories', categories_path
     categories_link_tag.html_safe if current_user_is_admin
   end
 
   def posts_link
-      link_to 'Posts', posts_path
+    link_to 'Posts', posts_path
   end
 
   def my_posts_link
-      link_to 'My Posts', my_posts_path
+    link_to 'My Posts', my_posts_path
   end
 
   def current_user_is_admin
@@ -25,12 +25,10 @@ module ApplicationHelper
   end
 
   def logout_user_link
-    link_to 'Logout', destroy_user_session_path, :method => :delete
+    link_to 'Logout', destroy_user_session_path, method: :delete
   end
 
   def register_user_link
-    unless current_user
-      link_to 'Register', new_user_registration_path
-    end
+    link_to 'Register', new_user_registration_path unless current_user
   end
 end
