@@ -1,8 +1,8 @@
 %h2
   = @post.title
+  = button_to 'Edit', edit_post_path, method: :get, class: 'btn btn-sm' if post_owner(@post)
+
 %p
   = @post.expiration_date.to_date
-%h2
-  = link_to 'Edit', edit_post_path(@post)
 %p
   = @post.description
