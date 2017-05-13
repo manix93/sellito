@@ -1,1 +1,9 @@
-%h2= @post.title
+%h2
+  = @post.title
+%p
+  = @post.description
+%p
+  = @post.expiration_date
+%h2
+  = link_to 'Edit', edit_post_path(@post)
+  
