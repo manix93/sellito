@@ -25,6 +25,8 @@ module ApplicationHelper
   end
 
   def register_user_link
-    link_to 'Register', new_user_registration_path
+    unless current_user
+      link_to 'Register', new_user_registration_path
+    end
   end
 end
