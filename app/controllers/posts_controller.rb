@@ -7,6 +7,10 @@ class PostsController < ApplicationController
     # @posts = current_user.posts.last(5)
   end
 
+  def user_posts
+    @posts = current_user.posts
+  end
+
   def new
     @post = Post.new
   end
