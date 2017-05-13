@@ -8,6 +8,10 @@ module ApplicationHelper
       link_to 'Posts', posts_path
   end
 
+  def my_posts_link
+      link_to 'My Posts', my_posts_path
+  end
+
   def current_user_is_admin
     current_user && current_user.is_admin?
   end
