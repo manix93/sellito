@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
-  before_action :fetch_post, only: [:show, :edit, :update, :destroy]
+  before_action :fetch_post, only: %i(show edit update destroy)
 
   def index
-    @posts = current_user.posts
+    @posts = Post.all.reverse
     # Wyświetla ostatnie 5 postów użytkownika
     # @posts = current_user.posts.last(5)
   end
