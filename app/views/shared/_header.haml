@@ -10,9 +10,14 @@
         = link_to 'About', about_path
       %li
         = link_to 'Cookies', cookies_path
-      = admin_categories_link
-      %li
-        = link_to 'Posts', posts_path
+      - if current_user
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle": "dropdown", type: "button"}
+            Menu
+            %span.caret
+            %ul.dropdown-menu
+              %li= posts_link
+              %li= admin_categories_link
       %li
         = login_or_logout_user_link
       %li
