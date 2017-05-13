@@ -4,7 +4,7 @@
       .navbar-brand
       = link_to image_tag("logo.png",:size => "43x50"), root_path
     %ul.nav.navbar-nav.pull-right
-      %li 
+      %li
         = link_to 'Home', root_path
       %li
         = link_to 'About', about_path
@@ -12,7 +12,8 @@
         = link_to 'Cookies', cookies_path
       = admin_categories_link
       %li
+        = link_to 'Posts', posts_path
+      %li
         = login_or_logout_user_link
       %li
         = register_user_link
-        
