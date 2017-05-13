@@ -12,16 +12,9 @@ class CategoriesController < ApplicationController
   def create
     #binding.pry # odpala pry w momencie wywołania metody
     #raise params.to_yaml # wyrzuca wyjątek do przeglądarki
+    return unless post_params[:user_id] == current_user.id.to_s
     @category = Category.new(category_params)
-    if @category.save
-      flash[:notice] = 'Category created!'
-      redirect_to @category
-      # odpowiednik
-      #redirect_to category_path(@category)
-    else
-      flash[:alert] = 'Could not create category'
-      redirect_back(fallback_location: root_path)
-    end
+    @category.valid? ? create_post : handle_post_validation_failed
   end
 
   def show; end
@@ -38,12 +31,23 @@ class CategoriesController < ApplicationController
     flash[:notice] = "Category #{@category.name} deleted"
     redirect_to categories_path
   end
-  
+
   private
+
+  def handle_post_validation_failed
+    flash[:errors] = @category.errors.full_messages
+    redirect_back(fallback_location: root_path)
+  end
+
+  def create_post
+    @category.save
+    flash[:notice] = 'Category created!'
+    redirect_to @category
+  end
 
   def fetch_category
     @category = Category.find(params[:id])
-  end 
+  end
 
   def category_params
     params.require(:category).permit(:name)
