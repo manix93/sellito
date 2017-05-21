@@ -1,5 +1,6 @@
-%h2
-  Edit category:
-  = @category.name
-  = link_to 'Delete', @category, method: :delete, data: { confirm: "Are you sure?" }
-= render 'form'
+- if current_user_is_admin
+  %h2
+    Edit category:
+    = @category.name
+    = link_to 'Delete', @category, method: :delete, data: { confirm: "Are you sure?" }
+  = render 'form'

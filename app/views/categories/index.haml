@@ -1,4 +1,4 @@
 = button_to 'Add new category', new_category_path, method: :get, class: 'btn btn-sm'
 %h2= 'Categories:'
 - @categories.each do |category|
-  %p= link_to category.name, category
+  %p= link_to category.name.capitalize, category

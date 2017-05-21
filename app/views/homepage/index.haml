@@ -1,4 +1,15 @@
 .row
   .container
-    .col-xs-4.col-xs-offset-4
-      %h2 Welcome to SELLITO!
+    %h2.text-center What are you looking for today?
+    .col-sm-6.col-sm-offset-3
+      %input.form-control{placeholder: 'Search...', type: 'Text'}
+      .row.text-center
+        - @categories.each do |category|
+          = link_to category.name.capitalize, category
+      .row.text-center
+        - @posts.each do |post|
+          %p
+            = link_to post.title, post
+            Categories:
+            - post.categories.each do |categories|
+              = categories.name
