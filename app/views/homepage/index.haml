@@ -7,7 +7,7 @@
         - @categories.each do |category|
           = link_to category.name.capitalize, category
       .row.text-center
-        - @posts.each do |post|
+        - @featured_posts.each do |post|
           %p
             = link_to post.title, post
             Categories:

@@ -19,7 +19,9 @@ class CategoriesController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @category
+  end
 
   def update
     @category.update_attributes(category_params)
